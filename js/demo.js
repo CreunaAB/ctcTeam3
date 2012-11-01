@@ -9,7 +9,7 @@
 
  $(document).ready(function () {
 	// st.loadLatestTweet(); // Init
-	$("#twitterSubmit").click(function (e) {
+	$("#twitter-name-form").submit(function (e) {
 		e.preventDefault();
 		var twitterName = $("#twitter-name").val();
 

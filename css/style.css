@@ -1,4 +1,5 @@
 body {
+	font-family: sans-serif;
 	padding-bottom: 25px;
 }
 
@@ -6,16 +7,23 @@ h1 {
 	margin: 20px auto 40px auto;
 	font-size: 35px;
 	width: 400px;
-	font-family: Lucida;
 	text-align: center;
 }
 
 .app {
 	margin: 0 auto;
 }
-
+.form {
+	width: 100%;
+	text-align: center;
+}
+input {
+	border: 2px solid rgba(51, 153, 255, 0.5);
+	border-radius: 15px;
+	background-color: white;
+	padding: 5px 10px;
+}
 .player {
-	float: left;
 	margin: 25px 25px 25px 45px;
 }
 
@@ -28,12 +36,11 @@ h1 {
 }
 
 .sp-player {
-	clear: both;
+	margin-top: 20px;
 }
 
 .sp-list {
 	margin-top: 20px;
-	/*max-height: 200px;*/
 }
 
 .cf:before,
