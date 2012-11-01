@@ -1,7 +1,7 @@
 {
     "BundleType": "Application",
-    "BundleCopyright": "© Markus Bergh, 2012",
-    "BundleIdentifier": "demo",
+    "BundleCopyright": "Creuna tech team 3",
+    "BundleIdentifier": "tweetsound",
     "BundleVersion": "1.0",
     "AppIcon": {
         "18x18": "/assets/icon-18.png",
@@ -9,10 +9,10 @@
         "128x128": "/assets/icon-128.png"
     },
     "AppDescription": {
-    	"en": "Det här är en demo, ingenting annat. Lovar."
+    	"en": "The sound of your tweet"
     },
     "AppName": {
-        "en": "Demo"
+        "en": "The sound of your tweet"
     },
     "SupportedLanguages": [
         "en"
@@ -20,7 +20,7 @@
     "DefaultTabs": [ ],
     "VendorIdentifier": "com.creuna",
     "RequiredInterface": "1",
-    "RequiredPermissions": [ 
-    	"http://*.audioscrobbler.com/"
+    "RequiredPermissions": [
+    	"http://*.twitter.com/"
     ]
 }
