@@ -29,3 +29,6 @@ Now you should have the helloworld-app visible in your spotify application.
 * In the search input write: `spotify:app:helloworld`, where "helloworld" is the bundle identifier found in the applications `manifest.json`
 
 Now you should have the helloworld-app visible in your spotify application.
+
+## Resources
+http://www.cypressnorth.com/blog/web-programming-and-development/how-to-easily-display-a-twitter-feed-using-javascript/
