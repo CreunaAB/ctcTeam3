@@ -8,92 +8,92 @@
 
 
  $(document).ready(function () {
-	// st.loadLatestTweet(); // Init
-	$("#twitter-name-form").submit(function (e) {
-		e.preventDefault();
-		var twitterName = $("#twitter-name").val();
+  $("#twitter-name-form").submit(function (e) {
+    e.preventDefault();
+    $(".player").remove();
+    var twitterName = $("#twitter-name").val();
 
-		st.loadLatestTweet(twitterName);
-	});
+    st.loadLatestTweet(twitterName);
+    $("#title").ajaxError(function (event, request, settings) {
+      $(this).append("Error requesting page " + settings.url);
+    });
+  });
  });
 
  var st = {
-	loadLatestTweet: function (twitterName) {
-		var _url = 'https://api.twitter.com/1/statuses/user_timeline/' + twitterName + '.json?callback=?&count=1';
-		$.getJSON(_url, st.getTweet);
-	},
+  loadLatestTweet: function (twitterName) {
+    var _url = 'https://api.twitter.com/1/statuses/user_timeline/' + twitterName + '.json?callback=?&count=1';
+    $.getJSON(_url, st.getTweet);
+  },
 
-	getTweet: function (data) {
-		response = data[0].text;
+  getTweet: function (data) {
+    response = data[0].text;
 
-		if (!response) {
+    var tracks = st.getSongsFromArray(st.splitString(response, ' '));
+    st.createPlaylist(tracks, response);
+  },
 
-		}
+  splitString: function (string, split) {
+    return string.split(split);
+  },
 
-		var tracks = st.getSongsFromArray(st.splitString(response, ' '));
-		st.createPlaylist(tracks, response);
-	},
+  getSongsFromArray: function (words) {
+    var wordsongs = [],
+        song,
+        word;
 
-	splitString: function (string, split) {
-		return string.split(split);
-	},
+    for (word in words) {
+      song = st.getSongFromWord(word);
+      if (!!song) {
+        wordsongs.push(song);
+      }
+    }
 
-	getSongsFromArray: function (words) {
-		var wordsongs = [],
-		i;
+    return wordsongs;
+  },
 
-		for (i = 0; i < words.length; i++) {
-			wordsongs[i] = st.getSongFromWord(words[i]);
-		}
+  getSongFromWord: function (word) {
+    var songs = st.getSongsFromWord(word);
+    var song = songs[Math.floor(Math.random() * songs.length)];
+    return song;
+  },
 
-		return wordsongs;
-	},
+  getSongsFromWord: function (word) {
+    var search = new m.Search(word);
 
-	getSongFromWord: function (word) {
-		var songs = st.getSongsFromWord(word);
-		var song = songs[Math.floor(Math.random() * songs.length)];
-		return song;
-	},
+    search.appendNext();
+    return search._tracks;
 
-	getSongsFromWord: function (word) {
-		var search = new m.Search(word);
+  },
 
-		search.appendNext();
-		return search._tracks;
+  createPlaylist: function (trackList, tweet) {
 
-	},
+    // Create element for visual holder and set class (for css)
+    var playerHolder = $(document.createElement('div'));
+    playerHolder.addClass('player');
+    // Create title and enumeraion
+    var title = $('#title');
 
-	createPlaylist: function (trackList, tweet) {
+    // Set class (for css)
+    title.text(tweet);
+    // Create spotify objects
+    var playlist = new m.Playlist();
+    var player = new v.Player();
+    // Fill up playlist
+    playlist.add(trackList);
+    // Set context
+    player.context = playlist;
+    // Set 1st track to player
+    player.track = playlist.get(0);
+    // Add it to dom
+    playerHolder.append(player.node);
+    $('.app').append(playerHolder);
+    // Visual list
+    var list = new v.List(playlist, function (track) {
+      return new v.Track(track, v.Track.FIELD.STAR | v.Track.FIELD.POPULARTIY | v.Track.FIELD.ARTIST | v.Track.FIELD.NAME | v.Track.FIELD.DURATION);
+    });
+    // Add list below player
+    playerHolder.append(list.node);
 
-		// Create element for visual holder and set class (for css)
-		var playerHolder = $(document.createElement('div'));
-		playerHolder.addClass('player');
-		// Create title and enumeraion
-		var title = $('#title');
-
-		// Set class (for css)
-		title.text(tweet);
-		// Add text to holder
-		playerHolder.append(title);
-		// Create spotify objects
-		var playlist = new m.Playlist();
-		var player = new v.Player();
-		// Fill up playlist
-		playlist.add(trackList);
-		// Set context
-		player.context = playlist;
-		// Set 1st track to player
-		player.track = playlist.get(0);
-		// Add it to dom
-		playerHolder.append(player.node);
-		$('.app').append(playerHolder);
-		// Visual list
-		var list = new v.List(playlist, function (track) {
-			return new v.Track(track, v.Track.FIELD.STAR | v.Track.FIELD.POPULARTIY | v.Track.FIELD.ARTIST | v.Track.FIELD.NAME | v.Track.FIELD.DURATION);
-		});
-		// Add list below player
-		playerHolder.append(list.node);
-
-	}
-
- }
+  }
+}
