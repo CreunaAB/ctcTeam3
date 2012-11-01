@@ -72,7 +72,7 @@
     var playerHolder = $(document.createElement('div'));
     playerHolder.addClass('player');
     // Create title and enumeraion
-    var title = $('#title');
+    var title = $('<h3 id="title" class="title" />');
 
     // Set class (for css)
     title.text(tweet);
@@ -87,6 +87,7 @@
     player.track = playlist.get(0);
     // Add it to dom
     playerHolder.append(player.node);
+    playerHolder.append(title);
     $('.app').append(playerHolder);
     // Visual list
     var list = new v.List(playlist, function (track) {

@@ -1,4 +1,10 @@
+html {
+	background-image: url("../assets/twitter.png"), url("../assets/bg.jpg");
+	background-repeat: no-repeat, repeat;
+	background-position: 50% 50%, top left;
+}
 body {
+	background-color: transparent;
 	font-family: sans-serif;
 	padding-bottom: 25px;
 }
@@ -28,19 +34,38 @@ input {
 }
 
 .title {
-	margin: 30px auto 10px;
-	font-size: 24px;
+	width: 70%;
+	margin: 30px 0 10px 5%;
+	display: inline-block;
+	vertical-align: top;
 	color: #fff;
-	text-shadow: 1px 1px 1px #000;
+	font-size: 24px;
+	line-height: 26px;
 	text-align: center;
+	text-shadow: 1px 1px 1px #000;
 }
 
 .sp-player {
+	display: inline-block;
+	vertical-align: top;
 	margin-top: 20px;
+	width: 20%;
 }
 
 .sp-list {
 	margin-top: 20px;
+	box-shadow: 0 0 20px rgba(0,0,0,0.8);
+	border: 2px groove #111;
+}
+.sp-list > div {
+	background-color: transparent;
+	background-image: none;
+}
+.sp-list a:nth-child(odd) {
+	background-color: rgba(80,80,80,.2);
+}
+.sp-list a:nth-child(even) {
+	background-color: rgba(0,0,0,.2);
 }
 
 .cf:before,
