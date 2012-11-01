@@ -1,0 +1,26 @@
+{
+  "BundleType": "Application",
+  "BundleIdentifier": "helloworld",
+  "AppIcon": {
+    "36x18": "HelloWorld.png"
+  },
+  "AppName": {
+    "en": "Creuna Tech Challenge"
+  },
+  "SupportedLanguages": ["en"],
+  "DefaultTabs": [
+    {
+        "arguments": "Blue",
+        "title":  { "en": "Blue" }
+    },
+    {
+        "arguments": "Red",
+        "title": { "en": "Red" }
+    },
+    {
+        "arguments": "Green",
+        "title": { "en": "Green" }
+    }
+  ]
+
+}
