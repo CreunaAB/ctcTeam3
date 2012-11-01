@@ -17,7 +17,6 @@ h1 {
 .player {
 	float: left;
 	margin: 25px 25px 25px 45px;
-	width: 500px;;
 }
 
 .player > * {
@@ -37,7 +36,7 @@ h1 {
 
 .sp-list {
 	margin-top: 20px;
-	max-height: 200px;
+	/*max-height: 200px;*/
 }
 
 .cf:before,
