@@ -28,7 +28,6 @@
 
   getTweet: function (data) {
     response = data[0].text;
-
     var tracks = st.getSongsFromArray(st.splitString(response, ' '));
     st.createPlaylist(tracks, response);
   },
@@ -43,12 +42,11 @@
         word;
 
     for (word in words) {
-      song = st.getSongFromWord(word);
+      song = st.getSongFromWord(words[word]);
       if (!!song) {
         wordsongs.push(song);
       }
     }
-
     return wordsongs;
   },
 
@@ -67,6 +65,8 @@
   },
 
   createPlaylist: function (trackList, tweet) {
+
+    // console.log(trackList, tweet);
 
     // Create element for visual holder and set class (for css)
     var playerHolder = $(document.createElement('div'));
