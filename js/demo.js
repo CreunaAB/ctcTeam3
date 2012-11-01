@@ -69,10 +69,9 @@
 		var playerHolder = $(document.createElement('div'));
 		playerHolder.addClass('player');
 		// Create title and enumeraion
-		var title = $(document.createElement('span'));
+		var title = $('#title');
 
 		// Set class (for css)
-		title.addClass("title");
 		title.text(tweet);
 		// Add text to holder
 		playerHolder.append(title);
