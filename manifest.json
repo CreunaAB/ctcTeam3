@@ -21,6 +21,6 @@
     "VendorIdentifier": "com.creuna",
     "RequiredInterface": "1",
     "RequiredPermissions": [
-    	"http://*.twitter.com/"
+    	"https://*.twitter.com/"
     ]
 }

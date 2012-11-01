@@ -6,6 +6,34 @@ var sp = getSpotifyApi(1),
     v = sp.require('sp://import/scripts/api/views'),
     dom = sp.require('sp://import/scripts/dom');
 
+
+$(document).ready(function() {
+  st.loadLatestTweet();
+});
+
+var st = {
+  getTweet: function(data){
+    response = data[0].text;
+    $("#twitter-feed").html('<p>'+response+'</p>');
+  },
+  loadLatestTweet: function (){
+    var _url = 'https://api.twitter.com/1/statuses/user_timeline/chenebu.json?callback=?&count=1',
+        response;
+    $.getJSON(_url, st.getTweet);
+  },
+  splitString: function (string, split) {
+    return string.split(split);
+  }
+}
+
+
+
+
+
+
+
+
+
 // var API_KEY = "change_me"; // Personal key obtained from Last.FM
 // var API_REQ = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&format=json&api_key=" + API_KEY;
 
